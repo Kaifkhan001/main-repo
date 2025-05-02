@@ -24,4 +24,27 @@ describe("For all sum test cases", () => {
         expect(res.body.message).toBe("Invalid input");
         expect(res.statusCode).toBe(411);
     });
+});
+
+
+describe("For all multiply test cases", () => {
+    it("Should return the correct multiply of numbers", async() => {
+        const res = await request(app).post("/multiply").send({
+            a: 5,
+            b: 3
+        });
+
+        expect(res.body.answer).toBe(15);
+        expect(res.statusCode).toBe(200);
+    });
+
+    it("Should check for the error cases",async () => {
+        const res = await request(app).post("/multiply").send({
+            a: ['dfgdjkfgn']
+        });
+        
+        expect(res.body.message).toBe("Invalid input");
+        expect(res.statusCode).toBe(411);
+
+    })
 })

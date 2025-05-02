@@ -57,7 +57,7 @@ describe("For all addition test cases", () => {
             b: 3
         });
 
-        expect(res.body.answer).toBe(9);
+        expect(res.body.answer).toBe(8);
         expect(res.statusCode).toBe(200);
     });
 

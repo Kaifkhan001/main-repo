@@ -1,4 +1,4 @@
-name: Run Tests
+name: Run Tests and Auto-Merge PR
 
 on:
   pull_request:
@@ -24,9 +24,6 @@ jobs:
       - name: Run tests
         run: npm run test
 
-
-
-        
   automerge:
     needs: test
     if: ${{ success() }}
@@ -35,11 +32,7 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Auto-merge PR
+      - name: Enable auto-merge for PR
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
           merge-method: squash
-

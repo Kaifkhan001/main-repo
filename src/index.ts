@@ -27,3 +27,21 @@ app.post('/sum', (req, res) => {
    });
 
 });
+
+//@ts-ignore
+app.post('/multiply', (req, res) => {
+    const parsedValue = inputType.safeParse(req.body);
+
+    if(!parsedValue.success){
+        return res.status(411).json({
+            message: "Invalid input"
+        });
+    };
+
+    const { a , b } = parsedValue.data;
+    const multiply = a*b;
+
+    res.json({
+        answer: multiply
+    });
+})

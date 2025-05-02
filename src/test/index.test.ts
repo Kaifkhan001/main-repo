@@ -71,3 +71,26 @@ describe("For all addition test cases", () => {
 
     })
 });
+
+
+describe("For all subtraction test cases", () => {
+    it("Should return the correct subtraction of numbers", async() => {
+        const res = await request(app).post("/subtraction").send({
+            a: 5,
+            b: 3
+        });
+
+        expect(res.body.answer).toBe(4);
+        expect(res.statusCode).toBe(200);
+    });
+
+    it("Should check for the error cases",async () => {
+        const res = await request(app).post("/subtraction").send({
+            a: ['dfgdjkfgn']
+        });
+        
+        expect(res.body.message).toBe("Invalid input");
+        expect(res.statusCode).toBe(411);
+
+    })
+});

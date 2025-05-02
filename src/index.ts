@@ -44,4 +44,22 @@ app.post('/multiply', (req, res) => {
     res.json({
         answer: multiply
     });
-})
+});
+
+//@ts-ignore
+app.post('/addition', (req, res) => {
+    const parsedValue = inputType.safeParse(req.body);
+
+    if(!parsedValue.success){
+        return res.status(411).json({
+            message: "Invalid input"
+        });
+    };
+
+    const { a , b } = parsedValue.data;
+    const addition = a+b;
+
+    res.json({
+        answer: addition
+    });
+});

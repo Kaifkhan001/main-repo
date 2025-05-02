@@ -47,4 +47,27 @@ describe("For all multiply test cases", () => {
         expect(res.statusCode).toBe(411);
 
     })
-})
+});
+
+
+describe("For all addition test cases", () => {
+    it("Should return the correct addition of numbers", async() => {
+        const res = await request(app).post("/addition").send({
+            a: 5,
+            b: 3
+        });
+
+        expect(res.body.answer).toBe(10);
+        expect(res.statusCode).toBe(200);
+    });
+
+    it("Should check for the error cases",async () => {
+        const res = await request(app).post("/addition").send({
+            a: ['dfgdjkfgn']
+        });
+        
+        expect(res.body.message).toBe("Invalid input");
+        expect(res.statusCode).toBe(411);
+
+    })
+});

@@ -80,7 +80,7 @@ describe("For all subtraction test cases", () => {
             b: 3
         });
 
-        expect(res.body.answer).toBe(7);
+        expect(res.body.answer).toBe(2);
         expect(res.statusCode).toBe(200);
     });
 

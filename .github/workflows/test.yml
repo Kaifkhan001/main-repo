@@ -24,6 +24,10 @@ jobs:
       - name: Run tests
         run: npm run test
 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+
   automerge:
     needs: test
     if: ${{ success() }}

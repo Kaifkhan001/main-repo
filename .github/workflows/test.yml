@@ -36,8 +36,10 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3  # ✅ Add this step
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}  # ✅ Ensure we're on the actual branch
 
       - name: Enable auto-merge for PR
         uses: peter-evans/enable-pull-request-automerge@v3

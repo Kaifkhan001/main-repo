@@ -3,7 +3,7 @@ import request from 'supertest';
 import { app } from "..";
 
 
-describe("For all sum test cases", () => {
+describe("For all sum test cases ", () => {
     it("Should return the correct sum of number", async() => {
         const res = await request(app).post("/sum").send({
             a: 3,

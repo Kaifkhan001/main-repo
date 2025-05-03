@@ -24,25 +24,3 @@ jobs:
       - name: Run tests
         run: npm run test
 
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-
-  automerge:
-    needs: test
-    if: ${{ success() }}
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      contents: write
-    steps:
-      - name: Checkout PR branch
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}  # ✅ Ensure we're on the actual branch
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-
-      - name: Enable auto-merge for PR
-        uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          merge-method: squash
